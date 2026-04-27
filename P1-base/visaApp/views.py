@@ -25,6 +25,9 @@ def aportarinfo_pago(request):
                 {'mensaje': '¡Error: numero tarjeta no encontrado en la sesión!',
                  'title': TITLE})
         pago_data = pago_form.cleaned_data
+
+        pago_data['instancia'] = request.COOKIES.get('ROUTEID', 'unknown')
+        
         # add numero to data
         pago_data['tarjeta_id'] = numero
         # save pago and get updated pago
