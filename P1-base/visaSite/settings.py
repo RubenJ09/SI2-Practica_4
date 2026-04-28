@@ -141,3 +141,7 @@ CACHES = {
 DATABASE_SERVER_URL = os.environ.get("DATABASE_SERVER_URL")
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:18080',
+    'http://127.0.0.1:18080',
+]
