@@ -144,4 +144,10 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:18080',
     'http://127.0.0.1:18080',
+    'http://172.17.224.1:18080', 
+]
+
+CSRF_ALLOWED_ORIGINS = [
+    'http://localhost:18080',
+    'http://127.0.0.1:18080',
 ]
