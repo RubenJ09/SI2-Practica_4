@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -145,9 +145,15 @@ CSRF_TRUSTED_ORIGINS = [
     'http://localhost:18080',
     'http://127.0.0.1:18080',
     'http://172.17.224.1:18080', 
+    'http://172.17.224.1:18000', 
+    'http://172.17.224.1:28000', 
+    'http://172.17.224.1:38000', 
 ]
 
 CSRF_ALLOWED_ORIGINS = [
     'http://localhost:18080',
     'http://127.0.0.1:18080',
 ]
+
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'http')
