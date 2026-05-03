@@ -160,17 +160,7 @@ class RegistrarPagoTests(TestCase):
                          self.pago_data["importe"])
 
     def test_registrar_pago_invalid(self):
-        # The blank=False constraint and MinLengthValidator are enforced
-        # when using Django forms (e.g., ModelForm), but if you create
-        # or modify a Pago instance programmatically in Python code
-        # (e.g., via Pago.objects.create()), the field's constraints
-        # might not be validated unless explicitly checked.
-        # So let us delete the foreignley to force an error in the "pago"
-        # creation
-
-        # Test with invalid vote data
+        # Invalid data should make registrar_pago fail.
         self.pago_data.pop("tarjeta_id")
         result = registrar_pago(self.pago_data)
         self.assertIsNone(result)
-        # Check that the error message
-        # mentions the missing field

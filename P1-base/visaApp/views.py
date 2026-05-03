@@ -57,7 +57,7 @@ def aportarinfo_tarjeta(request):
                 {'mensaje': '¡Error: Tarjeta no registrada!',
                  'title': TITLE})
 
-        # Guardamos el DNI
+        # Guardamos el numero de tarjeta en la sesion
         request.session['numeroTarjeta'] = tarjeta_form.cleaned_data['numero']
         return redirect('pago')
 

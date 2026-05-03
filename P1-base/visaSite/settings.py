@@ -19,7 +19,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment variables
-env_file = BASE_DIR / 'env'
+env_file = BASE_DIR / '.env'
 load_dotenv(dotenv_path=env_file)
 
 # Quick-start development settings - unsuitable for production
@@ -128,8 +128,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# store session in memory instead on in database
-SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+# Store sessions in the shared database so the cluster keeps session state.
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
 
 CACHES = {
     "default": {
@@ -138,7 +138,6 @@ CACHES = {
     }
 }
 
-DATABASE_SERVER_URL = os.environ.get("DATABASE_SERVER_URL")
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 CSRF_TRUSTED_ORIGINS = [
